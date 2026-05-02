@@ -1,0 +1,77 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite both this repository and the original MOSS-TTS-Nano paper."
+title: "MOSS-TTS-Nano Rust Candle"
+version: 0.1.0
+date-released: 2026-05-02
+url: "https://github.com/ramishi/moss-tts-nano-rust-candle"
+license: Apache-2.0
+authors:
+  - family-names: "Law"
+    given-names: "Simon"
+repository-code: "https://github.com/ramishi/moss-tts-nano-rust-candle"
+related-identifiers:
+  - id: "https://github.com/OpenMOSS/MOSS-TTS-Nano"
+    type: software
+    relation: derives-from
+  - id: "https://arxiv.org/abs/2603.18090"
+    type: article
+    relation: documents
+preferred-citation:
+  type: article
+  title: "MOSS-TTS Technical Report"
+  authors:
+    - family-names: Gong
+      given-names: Yitian
+    - family-names: Jiang
+      given-names: Botian
+    - family-names: Zhao
+      given-names: Yiwei
+    - family-names: Yuan
+      given-names: Yucheng
+    - family-names: Chen
+      given-names: Kuangwei
+    - family-names: Jiang
+      given-names: Yaozhou
+    - family-names: Chang
+      given-names: Cheng
+    - family-names: Hong
+      given-names: Dong
+    - family-names: Chen
+      given-names: Mingshu
+    - family-names: Li
+      given-names: Ruixiao
+    - family-names: Zhang
+      given-names: Yiyang
+    - family-names: Gao
+      given-names: Yang
+    - family-names: Chen
+      given-names: Hanfu
+    - family-names: Chen
+      given-names: Ke
+    - family-names: Wang
+      given-names: Songlin
+    - family-names: Yang
+      given-names: Xiaogui
+    - family-names: Zhang
+      given-names: Yuqian
+    - family-names: Huang
+      given-names: Kexin
+    - family-names: Lin
+      given-names: ZhengYuan
+    - family-names: Yu
+      given-names: Kang
+    - family-names: Chen
+      given-names: Ziqi
+    - family-names: Wang
+      given-names: Jin
+    - family-names: Fei
+      given-names: Zhaoye
+    - family-names: Cheng
+      given-names: Qinyuan
+    - family-names: Li
+      given-names: Shimin
+    - family-names: Qiu
+      given-names: Xipeng
+  year: 2026
+  doi: "10.48550/arXiv.2603.18090"
+  url: "https://arxiv.org/abs/2603.18090"

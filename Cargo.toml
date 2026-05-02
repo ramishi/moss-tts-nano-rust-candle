@@ -1,0 +1,53 @@
+[package]
+name = "moss-tts-nano-rust-candle"
+version = "0.1.0"
+edition = "2024"
+authors = ["ramishi"]
+description = "Rust/Candle implementation of MOSS-TTS-Nano — a 0.1B multilingual TTS model with voice cloning"
+license = "Apache-2.0"
+repository = "https://github.com/ramishi/moss-tts-nano-rust-candle"
+keywords = ["tts", "speech-synthesis", "candle", "rust", "moss", "voice-cloning"]
+categories = ["science", "multimedia::audio"]
+rust-version = "1.85"
+readme = "README.md"
+
+[dependencies]
+candle-core = "0.8"
+candle-nn = "0.8"
+candle-transformers = "0.8"
+safetensors = "0.4"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+anyhow = "1.0"
+hound = "3.5"
+tokenizers = "0.21"
+hf-hub = "0.3"
+sentencepiece = "0.13"
+rand = "0.8"
+clap = { version = "4.4", features = ["derive"] }
+rubato = "0.15"
+symphonia = { version = "0.5", features = ["flac", "mp3", "wav", "pcm"] }
+
+# Debug/export dependencies (optional)
+ndarray = { version = "0.15", features = ["serde"], optional = true }
+ndarray-npy = { version = "0.8", optional = true }
+
+[features]
+default = []
+# Enable numpy export for debugging/porting validation (--export-latents flag)
+debug-export = ["ndarray", "ndarray-npy"]
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.release-with-debug]
+inherits = "release"
+strip = false
+debug = true
+
+[dev-dependencies]
+tempfile = "3"

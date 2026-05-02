@@ -1,0 +1,36 @@
+# Build
+/target/
+/dist/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Model cache (downloaded at runtime)
+models/
+models_backup_*/
+
+# Python (not used, but just in case)
+__pycache__/
+*.pyc
+.venv/
+
+# Test artifacts
+*.npy
+test_output*.wav
+
+# Debug exports
+debug_export/
+
+# Local audio samples (for manual quality review, not for publication)
+audio_samples/
+
+# WorkBuddy (local assistant data, not for publication)
+.workbuddy/
