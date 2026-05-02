@@ -56,7 +56,7 @@ impl Sampler {
 
         // When do_sample is true, temperature must be positive
         // This matches Python's: if not (temperature > 0): raise ValueError
-        if !(self.temperature > 0.0) {
+        if self.temperature.partial_cmp(&0.0) != Some(std::cmp::Ordering::Greater) {
             return Err(candle_core::Error::Msg(
                 "temperature must be positive when do_sample=true".to_string(),
             ));
@@ -75,9 +75,9 @@ impl Sampler {
                 scores.iter().enumerate().map(|(i, &s)| (i, s)).collect();
             indexed_scores.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap());
             let threshold = indexed_scores[self.top_k - 1].1;
-            for i in 0..scores.len() {
-                if scores[i] < threshold {
-                    scores[i] = f32::NEG_INFINITY;
+            for score in &mut scores {
+                if *score < threshold {
+                    *score = f32::NEG_INFINITY;
                 }
             }
         }

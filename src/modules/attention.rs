@@ -177,10 +177,8 @@ impl MultiHeadAttention {
                 let mut allow = true;
 
                 // Causal mask: can only attend to positions <= current position
-                if causal_mask {
-                    if j > i + shift {
-                        allow = false;
-                    }
+                if causal_mask && j > i + shift {
+                    allow = false;
                 }
 
                 // Context window: can only attend to positions within context window

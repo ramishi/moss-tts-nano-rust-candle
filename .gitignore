@@ -13,8 +13,8 @@
 .DS_Store
 Thumbs.db
 
-# Model cache (downloaded at runtime)
-models/
+# Model cache (downloaded at runtime, repo root only)
+/models/
 models_backup_*/
 
 # Python (not used, but just in case)
@@ -34,3 +34,4 @@ audio_samples/
 
 # WorkBuddy (local assistant data, not for publication)
 .workbuddy/
+announcement_posts.md

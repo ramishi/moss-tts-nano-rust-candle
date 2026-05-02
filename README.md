@@ -6,7 +6,11 @@
 
 A **Rust/Candle** implementation of [MOSS-TTS-Nano](https://github.com/OpenMOSS/MOSS-TTS-Nano) — a 0.1B parameter multilingual text-to-speech model with voice cloning, from [MOSI.AI](https://mosi.cn/) and the [OpenMOSS team](https://www.open-moss.com/).
 
+> **🙏 Acknowledgments:** This project is an independent Rust port of the incredible work by the [OpenMOSS team](https://www.open-moss.com/) and [MOSI.AI](https://mosi.cn/). Their open-source [MOSS-TTS-Nano](https://github.com/OpenMOSS/MOSS-TTS-Nano) model — with its elegant architecture, high-quality synthesis, and Apache-2.0 licensing — made this Rust implementation possible. All credit for the model design, training, and original Python implementation goes to them. 🌟
+
 This is an **independent Rust port** of the official Python/PyTorch implementation, built on [Hugging Face Candle](https://github.com/huggingface/candle). It produces stereo 48 kHz audio with verified numerical parity against the Python reference, and requires **no Python runtime** — just a single compiled binary.
+
+**[中文文档 (Chinese README)](README_zh.md)**
 
 ---
 
@@ -14,8 +18,8 @@ This is an **independent Rust port** of the official Python/PyTorch implementati
 
 Compare to the official python MOSS-TTS-Nano :
 
-| | Python/PyTorch |  **Rust/Candle (this repo)** |
-|---|---|---|---|
+| | Python/PyTorch | **Rust/Candle (this repo)** |
+|---|---|---|
 | **Runtime deps** | Python 3.10+, PyTorch 2.7, torchaudio, transformers | None (static binary) |
 | **Install size** | ~2 GB (PyTorch) | **~10 MB** (single binary) |
 | **Model loading** | PyTorch `.bin` (BF16) | Safetensors (FP32, direct mmap) |

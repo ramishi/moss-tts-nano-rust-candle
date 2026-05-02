@@ -22,7 +22,7 @@ impl PatchedPretransform {
     /// If T is not divisible by patch_size, the input is zero-padded to the next multiple.
     pub fn encode(&self, x: &Tensor) -> Result<Tensor> {
         let (batch, dim, seq) = x.dims3()?;
-        let out_seq = (seq + self.patch_size - 1) / self.patch_size;
+        let out_seq = seq.div_ceil(self.patch_size);
         let padded_seq = out_seq * self.patch_size;
 
         // Pad if necessary: (B, D, seq) -> (B, D, padded_seq)
