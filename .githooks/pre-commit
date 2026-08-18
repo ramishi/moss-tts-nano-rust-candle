@@ -1,0 +1,18 @@
+#!/bin/sh
+# Pre-commit hook: block commits whose code is not rustfmt-clean.
+# This mirrors the CI `cargo fmt --check` gate so issues are caught locally.
+# Activate with: git config core.hooksPath .githooks
+
+set -e
+
+if ! command -v cargo >/dev/null 2>&1; then
+    echo "pre-commit: cargo not found in PATH; skipping fmt check" >&2
+    exit 0
+fi
+
+if ! cargo fmt --check; then
+    echo "" >&2
+    echo "pre-commit: code is not formatted. Run \`cargo fmt\` and re-stage, then commit." >&2
+    echo "pre-commit: (or bypass once with \`git commit --no-verify\` if intentional)" >&2
+    exit 1
+fi
