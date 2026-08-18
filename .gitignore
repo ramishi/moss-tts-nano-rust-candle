@@ -17,6 +17,21 @@ Thumbs.db
 /models/
 models_backup_*/
 
+# Release staging: all model artifacts are git-ignored and uploaded to GitHub Releases instead.
+# The binary downloads them (SHA256-verified) from the release at runtime.
+# Only weights_manifest.json is committed (it is embedded into the binary for verification).
+/release/moss_tts_nano_lm.safetensors
+/release/moss_audio_tokenizer.safetensors
+/release/tokenizer.model
+/release/config.json
+/release/moss_audio_tokenizer_config.json
+/release/*.safetensors
+/release/*.sha256
+/release/*.data
+/release/*.bin
+/release/*.onnx
+# NOTE: only weights_manifest.json is NOT ignored — it is committed and embedded in the binary.
+
 # Python (not used, but just in case)
 __pycache__/
 *.pyc

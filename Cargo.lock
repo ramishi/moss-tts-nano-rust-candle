@@ -1346,6 +1346,7 @@ dependencies = [
  "candle-nn",
  "candle-transformers",
  "clap",
+ "dirs",
  "hf-hub",
  "hound",
  "ndarray",
@@ -1356,9 +1357,11 @@ dependencies = [
  "sentencepiece",
  "serde",
  "serde_json",
+ "sha2",
  "symphonia",
  "tempfile",
  "tokenizers",
+ "ureq",
 ]
 
 [[package]]

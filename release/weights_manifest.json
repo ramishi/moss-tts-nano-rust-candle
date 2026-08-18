@@ -1,0 +1,37 @@
+{
+  "hf_repo": "ramishi/moss-tts-nano-candle",
+  "hf_revision": "7f845d2a1201d4028a5d409493dbea604fc5c5fb",
+  "description": "Model weights for moss-tts-nano-rust-candle. Mirrored from HuggingFace ramishi/moss-tts-nano-candle. The safetensors files are re-exported from the original PyTorch BF16 weights (OpenMOSS-Team/MOSS-TTS-Nano + OpenMOSS-Team/MOSS-Audio-Tokenizer-Nano) as FP32 for Candle mmap. All model files (weights + configs) are uploaded to GitHub Releases; only this manifest is committed to the repo (and embedded in the binary) so it can verify download integrity via SHA256.",
+  "files": {
+    "moss_tts_nano_lm.safetensors": {
+      "size": 284973928,
+      "sha256": "43d1f7d5fb21bb98ce0bb371a0acb06932e02baa942c2dbd15ef939ebb4d193d",
+      "role": "GPT-2 language model weights (FP32)",
+      "github_release_asset": true
+    },
+    "moss_audio_tokenizer.safetensors": {
+      "size": 87878680,
+      "sha256": "794efedddb7b69efc62e21ee26fe7af4505b2895bbe9a9769868d0dba6082ff1",
+      "role": "Audio codec / encodec-style weights (FP32)",
+      "github_release_asset": true
+    },
+    "tokenizer.model": {
+      "size": 470897,
+      "sha256": "c353ee1479b536bf414c1b247f5542b6607fb8ae91320e5af1781fee200fddff",
+      "role": "SentencePiece text tokenizer",
+      "github_release_asset": true
+    },
+    "config.json": {
+      "size": 5210,
+      "sha256": "ba36b08c80d4ae0805a2bab32b6ac90ec0d1815d01d3854ba42811db1d5bde99",
+      "role": "LM config (dims, layers, RoPE, vocab)",
+      "github_release_asset": true
+    },
+    "moss_audio_tokenizer_config.json": {
+      "size": 7385,
+      "sha256": "b38892f8ba00efc18af2ad9eca999c7603f871548c2e7f99258cb1cefc70ee06",
+      "role": "Audio tokenizer / codec config",
+      "github_release_asset": true
+    }
+  }
+}

@@ -28,6 +28,11 @@ clap = { version = "4.4", features = ["derive"] }
 rubato = "0.15"
 symphonia = { version = "0.5", features = ["flac", "mp3", "wav", "pcm"] }
 
+# GitHub Release model download (fallback when HuggingFace is unavailable)
+ureq = "2.12"
+sha2 = "0.10"
+dirs = "5.0"
+
 # Debug/export dependencies (optional)
 ndarray = { version = "0.15", features = ["serde"], optional = true }
 ndarray-npy = { version = "0.8", optional = true }
