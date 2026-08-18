@@ -404,33 +404,55 @@ fn main() -> Result<()> {
         .context("Failed to load models")?
     } else if args.github_only {
         // --github-only: skip HF, download directly from GitHub Release with SHA256 verification
-        println!("[GITHUB-ONLY] Skipping HuggingFace, downloading from GitHub Release {}...", GH_RELEASE_TAG);
+        println!(
+            "[GITHUB-ONLY] Skipping HuggingFace, downloading from GitHub Release {}...",
+            GH_RELEASE_TAG
+        );
 
-        let tokenizer = download_from_github_release("tokenizer.model")
-            .or_else(|e| {
-                let local = args.tokenizer.clone().unwrap_or_else(|| default_lm_dir.join("tokenizer.model"));
+        let tokenizer = download_from_github_release("tokenizer.model").or_else(|e| {
+            let local = args
+                .tokenizer
+                .clone()
+                .unwrap_or_else(|| default_lm_dir.join("tokenizer.model"));
+            if local.exists() {
+                println!(
+                    "[LOCAL] GitHub download failed for tokenizer.model ({}), using local: {}",
+                    e,
+                    local.display()
+                );
+                Ok(local)
+            } else {
+                Err(e)
+            }
+        })?;
+        let config = download_from_github_release("config.json").or_else(|e| {
+            let local = args
+                .config
+                .clone()
+                .unwrap_or_else(|| default_lm_dir.join("config.json"));
+            if local.exists() {
+                println!(
+                    "[LOCAL] GitHub download failed for config.json ({}), using local: {}",
+                    e,
+                    local.display()
+                );
+                Ok(local)
+            } else {
+                Err(e)
+            }
+        })?;
+        let lm_weights =
+            download_from_github_release("moss_tts_nano_lm.safetensors").or_else(|e| {
+                let local = args
+                    .lm_weights
+                    .clone()
+                    .unwrap_or_else(|| default_lm_dir.join("moss_tts_nano_lm.safetensors"));
                 if local.exists() {
-                    println!("[LOCAL] GitHub download failed for tokenizer.model ({}), using local: {}", e, local.display());
-                    Ok(local)
-                } else {
-                    Err(e)
-                }
-            })?;
-        let config = download_from_github_release("config.json")
-            .or_else(|e| {
-                let local = args.config.clone().unwrap_or_else(|| default_lm_dir.join("config.json"));
-                if local.exists() {
-                    println!("[LOCAL] GitHub download failed for config.json ({}), using local: {}", e, local.display());
-                    Ok(local)
-                } else {
-                    Err(e)
-                }
-            })?;
-        let lm_weights = download_from_github_release("moss_tts_nano_lm.safetensors")
-            .or_else(|e| {
-                let local = args.lm_weights.clone().unwrap_or_else(|| default_lm_dir.join("moss_tts_nano_lm.safetensors"));
-                if local.exists() {
-                    println!("[LOCAL] GitHub download failed for lm weights ({}), using local: {}", e, local.display());
+                    println!(
+                        "[LOCAL] GitHub download failed for lm weights ({}), using local: {}",
+                        e,
+                        local.display()
+                    );
                     Ok(local)
                 } else {
                     Err(e)
@@ -438,9 +460,16 @@ fn main() -> Result<()> {
             })?;
         let codec_config = download_from_github_release("moss_audio_tokenizer_config.json")
             .or_else(|e| {
-                let local = args.codec_config.clone().unwrap_or_else(|| default_codec_dir.join("moss_audio_tokenizer_config.json"));
+                let local = args
+                    .codec_config
+                    .clone()
+                    .unwrap_or_else(|| default_codec_dir.join("moss_audio_tokenizer_config.json"));
                 if local.exists() {
-                    println!("[LOCAL] GitHub download failed for codec config ({}), using local: {}", e, local.display());
+                    println!(
+                        "[LOCAL] GitHub download failed for codec config ({}), using local: {}",
+                        e,
+                        local.display()
+                    );
                     Ok(local)
                 } else {
                     Err(e)
@@ -448,9 +477,16 @@ fn main() -> Result<()> {
             })?;
         let codec_weights = download_from_github_release("moss_audio_tokenizer.safetensors")
             .or_else(|e| {
-                let local = args.codec_weights.clone().unwrap_or_else(|| default_codec_dir.join("moss_audio_tokenizer.safetensors"));
+                let local = args
+                    .codec_weights
+                    .clone()
+                    .unwrap_or_else(|| default_codec_dir.join("moss_audio_tokenizer.safetensors"));
                 if local.exists() {
-                    println!("[LOCAL] GitHub download failed for codec weights ({}), using local: {}", e, local.display());
+                    println!(
+                        "[LOCAL] GitHub download failed for codec weights ({}), using local: {}",
+                        e,
+                        local.display()
+                    );
                     Ok(local)
                 } else {
                     Err(e)
